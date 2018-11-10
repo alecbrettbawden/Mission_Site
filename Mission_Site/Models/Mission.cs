@@ -13,7 +13,11 @@ namespace Mission_Site.Models
         public string missionStreetAddress { get; set; }
         public string missionCity { get; set; }
         public int missionZip { get; set; }
-        public string? missionState { get; set; }
+        public string missionState { get; set; }
         public string missionCountry { get; set; }
+        public string missionLanguage { get; set; }
+        public string missionClimate { get; set; }
+        public string missionDominateReligion { get; set; }
+        public string missionSymbol { get; set; }
     }
 }
