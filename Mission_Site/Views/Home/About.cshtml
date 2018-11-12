@@ -1,7 +1,40 @@
 ﻿@{
     ViewBag.Title = "About";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
-
-<p>Use this area to provide additional information.</p>
+<body>
+    <!--Table of business name and purpose-->
+    <table>
+        <tr>
+            <td>[Business Name]</td>
+            <td>Purpose</td>
+        </tr>
+        <tr>
+            <td>
+                <img src="~/Content/Images/Preach_My_Gospel.jpg" alt="Preach My Gospel Manual" />
+            <td>
+                [business name]'s purpose is to assist in prepaing future missionaries for their mission area.
+                We do this by connecting future missionaries to past missionaries that have served in
+                the same mission or by letting past missionaries answer questions of future missionaries.
+            </td>
+        </tr>
+    </table>
+    <!--table of missions-->
+    <table>
+        <br />
+        <br />
+        <tr>
+            <td>
+                <a href="http://missionhome.com/?missions=california-ventura-mission">California Ventura Mission</a>
+                <img src="~/Content/Images/CaliforniaFlag.png" width="300" height="200" alt="California State Flag" />
+            </td>
+            <td>
+                <a href="http://missionhome.com/?missions=california-arcadia-mission">California Arcadia Mission</a>
+                <img src="~/Content/Images/californiaStateFlag.jpg" width="300" height="200" alt="California State Flag" />
+            </td>
+            <td>
+                <a href="http://missionhome.com/?missions=chile-concepcion-south-mission">Chile Concepcion South Mission</a>
+                <img src="~/Content/Images/chileFlag.jpg" width="300" height="200" alt="Chile Country Flag" />
+            </td>
+        </tr>
+    </table>
+</body>
