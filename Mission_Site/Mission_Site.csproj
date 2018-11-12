@@ -246,6 +246,7 @@
     <Content Include="Views\Mission\Delete.cshtml" />
     <Content Include="Views\Mission\Details.cshtml" />
     <Content Include="Views\Mission\Edit.cshtml" />
+    <Content Include="Views\Mission\MissionSelect.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
