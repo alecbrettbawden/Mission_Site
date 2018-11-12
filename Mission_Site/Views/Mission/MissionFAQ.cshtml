@@ -1,65 +1,88 @@
-﻿@model IEnumerable<Mission_Site.Models.Mission>
+﻿@model Mission_Site.Models.Mission
 
 @{
     ViewBag.Title = "MissionFAQ";
 }
 
-<h2>MissionFAQ</h2>
+<h2>@Html.DisplayFor(model => model.missionName)</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.missionName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.missionPresidentName)
-        </th>
-        <th>
+
+<img src="@Html.DisplayFor(model => model.missionImage)" />
+
+<div>
+    <h4>Mission Info</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.presidentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.presidentName)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.missionAddress)
-        </th>
-        <th>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.missionAddress)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.missionLanguage)
-        </th>
-        <th>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.missionLanguage)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.missionClimate)
-        </th>
-        <th>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.missionClimate)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.missionDominateReligion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.missionSymbol)
-        </th>
-        <th></th>
-    </tr>
+        </dt>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.missionName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.missionPresidentName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.missionAddress)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.missionLanguage)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.missionClimate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.missionDominateReligion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.missionSymbol)
-        </td>
+        <dd>
+            @Html.DisplayFor(model => model.missionDominateReligion)
+        </dd>
 
-    </tr>
-}
+    </dl>
 
-</table>
+    <h4>Frequently Asked Questions</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            What should I bring?
+        </dt>
+
+        <dd>
+            Your scriptures and maybe some clothes
+        </dd>
+
+        <dt>
+            How can I prepare?
+        </dt>
+
+        <dd>
+            Read your scriptures and pray everyday.
+        </dd>
+
+        <dt>
+            What are the people like?
+        </dt>
+
+        <dd>
+            The best people in the world are in this mission.
+        </dd>
+    </dl>
+</div>
+

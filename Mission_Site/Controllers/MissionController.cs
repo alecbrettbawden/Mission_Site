@@ -36,6 +36,20 @@ namespace Mission_Site.Controllers
             return View(mission);
         }
 
+        public ActionResult MissionFAQ(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Mission mission = db.Mission.Find(id);
+            if (mission == null)
+            {
+                return HttpNotFound();
+            }
+            return View(mission);
+        }
+
         // GET: Mission/Create
         public ActionResult Create()
         {
@@ -123,6 +137,11 @@ namespace Mission_Site.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult MissionSelect()
+        {
+            return View();
         }
     }
 }

@@ -246,7 +246,11 @@
     <Content Include="Views\Mission\Delete.cshtml" />
     <Content Include="Views\Mission\Details.cshtml" />
     <Content Include="Views\Mission\Edit.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Home\Contact.cshtml" />
+=======
+    <Content Include="Views\Mission\MissionSelect.cshtml" />
+>>>>>>> 85962a9b72c6def9e2304466bb5018484f4464d0
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

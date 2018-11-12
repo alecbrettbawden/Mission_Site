@@ -31,5 +31,7 @@ namespace Mission_Site.Models
 
         [DisplayName("Dominate Religion")]
         public string missionDominateReligion { get; set; }
+
+        public string missionImage { get; set; }
     }
 }
