@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Mission_Site.Models.Mission>
+
+@{
+    ViewBag.Title = "MissionFAQ";
+}
+
+<h2>MissionFAQ</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.missionName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.missionPresidentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.missionAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.missionLanguage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.missionClimate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.missionDominateReligion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.missionSymbol)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.missionName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.missionPresidentName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.missionAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.missionLanguage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.missionClimate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.missionDominateReligion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.missionSymbol)
+        </td>
+
+    </tr>
+}
+
+</table>

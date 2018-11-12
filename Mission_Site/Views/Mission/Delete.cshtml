@@ -1,0 +1,72 @@
+﻿@model Mission_Site.Models.Mission
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Mission</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.missionName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.missionName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.presidentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.presidentName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.missionAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.missionAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.missionLanguage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.missionLanguage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.missionClimate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.missionClimate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.missionDominateReligion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.missionDominateReligion)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

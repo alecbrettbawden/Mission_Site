@@ -1,23 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
 namespace Mission_Site.Models
 {
+    [Table("Missions")]
     public class Mission
     {
+        [Key]
         public int missionID { get; set; }
+
+        [DisplayName("Name")]
         public string missionName { get; set; }
-        public string missionPresidentName { get; set; }
-        public string missionStreetAddress { get; set; }
-        public string missionCity { get; set; }
-        public int missionZip { get; set; }
-        public string missionState { get; set; }
-        public string missionCountry { get; set; }
+
+        [DisplayName("Mission President")]
+        public string presidentName { get; set; }
+
+        [DisplayName("Address")]
+        public string missionAddress { get; set; }
+
+        [DisplayName("Language")]
         public string missionLanguage { get; set; }
+
+        [DisplayName("Climate")]
         public string missionClimate { get; set; }
+
+        [DisplayName("Dominate Religion")]
         public string missionDominateReligion { get; set; }
-        public string missionSymbol { get; set; }
     }
 }

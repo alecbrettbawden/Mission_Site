@@ -1,0 +1,66 @@
+﻿@model Mission_Site.Models.Mission
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Mission</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.missionName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.missionName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.presidentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.presidentName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.missionAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.missionAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.missionLanguage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.missionLanguage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.missionClimate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.missionClimate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.missionDominateReligion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.missionDominateReligion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.missionID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
