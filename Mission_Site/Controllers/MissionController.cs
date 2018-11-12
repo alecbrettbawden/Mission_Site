@@ -27,7 +27,7 @@ namespace Mission_Site.Controllers
 
         public ActionResult MissionFAQ(int missionID)
         {
-            return View(missionList)
+            return View(missionList);
         }
     }
 }
