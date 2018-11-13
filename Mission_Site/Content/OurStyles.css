@@ -15,11 +15,7 @@
     padding-top: 100px;
     background-size: 100%;
 }
-.back_Missions {
-    background-image: url(../Graphics/background1.png);
-    padding-top: 100px;
-    background-size: 100%;
-}
+
 
 .back_Contact {
     background-image: url(../Graphics/background3.png);
@@ -27,6 +23,12 @@
     background-size: 100%;
 }
 
+
+.back_MissionSelect {
+    background-image: url(../Graphics/background1.png);
+    padding-top: 100px;
+    background-size: 100%;
+}
 ul {
     list-style-type: none;
     margin: 0;
