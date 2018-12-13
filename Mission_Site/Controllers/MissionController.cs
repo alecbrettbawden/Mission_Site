@@ -197,9 +197,16 @@ namespace Mission_Site.Controllers
         {
             if (ModelState.IsValid)
             {
-                int name = 1;
+                             List<Users> returnedRecord = db.Users.ToList();
+             
+                foreach (var record in returnedRecord)
+                {
+                    if (record.userEmail == User.Identity.Name)
+                    {
+                        missionQuestions.userID = record.userID;
+                    }
+                }
 
-                missionQuestions.userID = name;
                 missionQuestions.missionID = id;
                 db.MissionQuestions.Add(missionQuestions);
                 db.SaveChanges();
@@ -241,19 +248,6 @@ namespace Mission_Site.Controllers
                 return View();
             }
 
-            //var returnedRecord = db.Database.SqlQuery<int>("SELECT UserID FROM Users WHERE UserEmail = " + email + " AND password = " + password);
-            //Convert.ToInt32(returnedRecord);
-
-            //if (returnedRecord > 0)
-            //{
-            //    FormsAuthentication.SetAuthCookie(email, rememberMe);
-
-            //    return RedirectToAction("MissionSelect", "Mission");
-            //}
-            //else
-            //{
-            //    return View();
-            //}
         }
 
         public ActionResult newAccount()
