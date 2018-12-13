@@ -75,6 +75,17 @@ li {
         text-decoration:none;
     }
 
+.name {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS';
+    font-weight: lighter;
+    font-size: 18px;
+    margin:0;
+}
+
 .active {
    font-style:italic;
 }
@@ -143,4 +154,11 @@ font-size:32px;
 .formQ{
     border-style:none;
     background-color:none;
+}
+
+.flag{
+    width:200px;
+    border-style:solid;
+    border-width:3px;
+    border-color:black;
 }

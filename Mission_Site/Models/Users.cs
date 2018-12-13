@@ -16,6 +16,7 @@ namespace Mission_Site.Models
         [Display(Name = "User Name")]
         public string userEmail { get; set; }
 
+      
         [Display(Name = "Password")]
         public string password { get; set; }
 
