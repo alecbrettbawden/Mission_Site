@@ -160,7 +160,6 @@
     <Compile Include="Models\Mission.cs" />
     <Compile Include="Models\MissionQuestions.cs" />
     <Compile Include="Models\Users.cs" />
-    <Compile Include="Models\UsersController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -360,13 +359,8 @@
     <Content Include="Views\MissionQuestions\Details.cshtml" />
     <Content Include="Views\MissionQuestions\Edit.cshtml" />
     <Content Include="Views\MissionQuestions\Index.cshtml" />
-    <Content Include="Views\Mission\Login.cshtml" />
-    <Content Include="Views\Users\Create.cshtml" />
-    <Content Include="Views\Users\Delete.cshtml" />
-    <Content Include="Views\Users\Details.cshtml" />
-    <Content Include="Views\Users\Edit.cshtml" />
-    <Content Include="Views\Users\Index.cshtml" />
-    <Content Include="Views\Mission\newAccount.cshtml" />
+    <Content Include="Views\Mission\UpdateAnswer.cshtml" />
+    <Content Include="Views\Mission\AskQuestion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

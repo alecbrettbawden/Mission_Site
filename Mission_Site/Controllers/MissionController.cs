@@ -6,7 +6,6 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Security;
 using Mission_Site.DAL;
 using Mission_Site.Models;
 
@@ -37,7 +36,6 @@ namespace Mission_Site.Controllers
             return View(mission);
         }
 
-        [Authorize]
         public ActionResult MissionFAQ(int? id)
         {
             if (id == null)
@@ -148,56 +146,63 @@ namespace Mission_Site.Controllers
 
         public ActionResult MissionSelect()
         {
-            return View();
+            List<Mission> missionList = db.Mission.ToList();
+            return View(missionList);
         }
 
-        [HttpGet]
-        public ActionResult Login()
+        public ActionResult UpdateAnswer(int? id)
         {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Login(FormCollection form, bool rememberMe = false)
-        {
-            string email = form["Email"].ToString();
-            string password = form["Password"].ToString();
-
-            //Users returnedRecord = new Users();
-
-            var returnedRecord = db.Database.SqlQuery<int>("SELECT UserID FROM Users WHERE UserEmail = " + email + " AND password = " + password);
-
-            if (returnedRecord > 0)
+            if (id == null)
             {
-                FormsAuthentication.SetAuthCookie(email, rememberMe);
-
-                return RedirectToAction("MissionSelect", "Mission");
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            else
+            MissionQuestions missionQuestions = db.MissionQuestions.Find(id);
+            if (missionQuestions == null)
             {
-                return View();
+                return HttpNotFound();
             }
-        }
-
-        public ActionResult newAccount()
-        {
-            return View();
+            return View(missionQuestions);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult newAccount([Bind(Include = "userID,userEmail,password,firstName,lastName")] Users users, bool rememberMe = false)
+        public ActionResult UpdateAnswer([Bind(Include = "missionquestionID,missionID,userID,question,answer")] MissionQuestions missionQuestions)
         {
-            string email = users.userEmail;
             if (ModelState.IsValid)
             {
-                db.Users.Add(users);
+                missionQuestions.question = missionQuestions.question;
+                db.Entry(missionQuestions).State = EntityState.Modified;
                 db.SaveChanges();
-                FormsAuthentication.SetAuthCookie(email, rememberMe);
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("MissionFAQ", new { id = missionQuestions.missionID});
+            }
+            return View(missionQuestions);
+        }
+
+        // GET: MissionQuestions/CreateQuestion
+        public ActionResult AskQuestion(int id)
+        {
+            ViewBag.missionID = id;
+            Mission mission = db.Mission.Find(id);
+            ViewBag.missionName = mission.missionName;
+
+            return View();
+        }
+
+        // POST: Mission/askQuestion
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AskQuestion([Bind(Include = "missionquestionID,missionID,userID,question,answer,missionDominateReligion")] MissionQuestions missionQuestions, int id)
+        {
+            if (ModelState.IsValid)
+            {
+                missionQuestions.missionID = id;
+                db.MissionQuestions.Add(missionQuestions);
+                db.SaveChanges();
+                return RedirectToAction("MissionFAQ","Mission", new { id });
             }
 
-            return View(users);
+            return View(missionQuestions);
         }
+
     }
 }

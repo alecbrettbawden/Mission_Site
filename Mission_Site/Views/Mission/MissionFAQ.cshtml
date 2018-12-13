@@ -9,74 +9,108 @@
 
 <img src="@Html.DisplayFor(model => model.missionImage)" />
 
-    <h4>Mission Info</h4>
-    <hr />
-    <table>
-        <tr>
-            <td style="width:50%">
-                <table>
-                    <dl>
-                        <dt>
-                            @Html.DisplayNameFor(model => model.presidentName)
-                        </dt>
+    <br /><br />
+<table style="vertical-align:top">
+    <tr style="vertical-align:top;">
+        
+        <td style="width:50%">
+            <h4>Mission Info</h4>
+            <hr />
+            <table>
+                <dl>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.presidentName)
+                    </dt>
 
-                        <dd>
-                            @Html.DisplayFor(model => model.presidentName)
-                        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.presidentName)
+                    </dd>
 
-                        <dt>
-                            @Html.DisplayNameFor(model => model.missionAddress)
-                        </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.missionAddress)
+                    </dt>
 
-                        <dd>
-                            @Html.DisplayFor(model => model.missionAddress)
-                        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.missionAddress)
+                    </dd>
 
-                        <dt>
-                            @Html.DisplayNameFor(model => model.missionLanguage)
-                        </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.missionLanguage)
+                    </dt>
 
-                        <dd>
-                            @Html.DisplayFor(model => model.missionLanguage)
-                        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.missionLanguage)
+                    </dd>
 
-                        <dt>
-                            @Html.DisplayNameFor(model => model.missionClimate)
-                        </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.missionClimate)
+                    </dt>
 
-                        <dd>
-                            @Html.DisplayFor(model => model.missionClimate)
-                        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.missionClimate)
+                    </dd>
 
-                        <dt>
-                            @Html.DisplayNameFor(model => model.missionDominateReligion)
-                        </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.missionDominateReligion)
+                    </dt>
 
-                        <dd>
-                            @Html.DisplayFor(model => model.missionDominateReligion)
-                        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.missionDominateReligion)
+                    </dd>
 
-                    </dl>
-                </table>
-                </td><td style="vertical-align:top;">
-                <h4>Frequently Asked Questions</h4>
-                <table>
+                </dl>
+            </table>
+        </td>
+        <td style="vertical-align:top;">
+            <h4>Frequently Asked Questions</h4>
+            <hr />
+            <table>
 
-                    @foreach (var item in Model.MissionQuestions)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.question)
+                @foreach (var item in Model.MissionQuestions)
+                {
+                    <tr>
+                        <td class="question">
+                            @Html.DisplayFor(modelItem => item.question)
+                        </td>
+
+
+                    </tr>
+                    <tr>
+                        <td class="answer">
+                            @Html.DisplayFor(modelItem => item.answer)
+                        </td>
+
+                        @if (item.answer != null)
+                        {
+                            <td style="padding-left:20px;">
+                                <p class="btn-sm btn-outline btn">@Html.ActionLink("Edit Answer", "UpdateAnswer", new { id = item.missionquestionID })</p>
                             </td>
+                        }
+
+
+                    </tr>
+
+                        <tr>
+                            @if (item.answer == null)
+                            {
                             <td>
-                                @Html.DisplayFor(modelItem => item.answer)
+                                @Html.ActionLink("Answer This Question", "UpdateAnswer", new { id = item.missionquestionID })
+                            </td>
+                            }
+                        </tr>
+                        <tr>
+                            <td width="20px;">
+                                &nbsp;
                             </td>
                         </tr>
-                    }
 
-                </table>
-            </td>
-        </tr>
-    </table>
+                }
+                        <tr><td>@Html.ActionLink("Ask A New Question", "AskQuestion", new { id = Model.missionID }, htmlAttributes: new { @class = "btn btn-default btn-outline-dark" })</td></tr>
+                
+
+            </table>
+        </td>
+    </tr>
+</table>
 
  

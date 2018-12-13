@@ -1,4 +1,4 @@
-﻿@model Mission_Site.Models.Mission
+﻿@model IEnumerable<Mission_Site.Models.Mission>
 
 @{
     ViewBag.Title = "MissionSelect";
@@ -60,8 +60,10 @@
 <div class="dropdown">
     <button class="dropbtn">Select a mission</button>
     <div class="dropdown-content">
-        <a href="@Url.Action("MissionFAQ","Mission", new { id = 1 })">Chile Concepcion South Mission</a>
-        <a href="@Url.Action("MissionFAQ","Mission", new { id = 2 })">California Arcadia Mission</a>
-        <a href="@Url.Action("MissionFAQ","Mission", new { id = 3 })">California Ventura Mission</a>
+        @foreach (var item in Model)
+        {
+            <a href="@Url.Action("MissionFAQ","Mission", new { id = item.missionID })">@Html.DisplayFor(modeItem => item.missionName)</a>
+
+        }
     </div>
 </div>

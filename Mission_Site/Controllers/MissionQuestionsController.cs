@@ -39,6 +39,7 @@ namespace Mission_Site.Controllers
         // GET: MissionQuestions/Create
         public ActionResult Create()
         {
+           
             return View();
         }
 
