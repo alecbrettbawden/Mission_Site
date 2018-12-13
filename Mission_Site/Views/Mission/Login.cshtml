@@ -2,16 +2,23 @@
 @{
     ViewBag.Title = "Login";
 }
+<div>
+    <h2>Login</h2>
 
-<h2>Login</h2>
+    @using (Html.BeginForm("Login", "Mission", FormMethod.Post))
+    {
+        <label for="inputEmail">Email Address</label>
+        @Html.TextBox("Email")
+        <label for="inputPassword">Password</label>
+        @Html.Password("Password")
+        <button type="submit">Login</button>
 
-@using (Html.BeginForm("Login", "Home", FormMethod.Post))
-{
-    <label for="inputEmail">User Name</label>
-    @Html.TextBox("User Name")
-    <label for="inputPassword">Password</label>
-    @Html.Password("Password")
-    <button type="submit">Login</button>
+    }
 
-}
+</div>
 
+<div>
+    <p>
+        @Html.ActionLink("Create New Account", "newAccount", "Mission", htmlAttributes: new { @class = "btn btn-default btn-outline-dark" })
+    </p>
+</div>

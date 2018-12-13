@@ -20,9 +20,9 @@ namespace Mission_Site.Models
         public string password { get; set; }
 
         [Display(Name = "First Name")]
-        public string firstName { get; set; }
+        public string first_name { get; set; }
 
         [Display(Name = "Last Name")]
-        public string lastName { get; set; }
+        public string last_name { get; set; }
     }
 }
