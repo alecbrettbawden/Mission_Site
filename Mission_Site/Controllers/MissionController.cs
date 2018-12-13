@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using Mission_Site.DAL;
 using Mission_Site.Models;
 
@@ -36,6 +37,7 @@ namespace Mission_Site.Controllers
             return View(mission);
         }
 
+        [Authorize]
         public ActionResult MissionFAQ(int? id)
         {
             if (id == null)
@@ -147,6 +149,55 @@ namespace Mission_Site.Controllers
         public ActionResult MissionSelect()
         {
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(FormCollection form, bool rememberMe = false)
+        {
+            string email = form["Email"].ToString();
+            string password = form["Password"].ToString();
+
+            //Users returnedRecord = new Users();
+
+            var returnedRecord = db.Database.SqlQuery<int>("SELECT UserID FROM Users WHERE UserEmail = " + email + " AND password = " + password);
+
+            if (returnedRecord > 0)
+            {
+                FormsAuthentication.SetAuthCookie(email, rememberMe);
+
+                return RedirectToAction("MissionSelect", "Mission");
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+        public ActionResult newAccount()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult newAccount([Bind(Include = "userID,userEmail,password,firstName,lastName")] Users users, bool rememberMe = false)
+        {
+            string email = users.userEmail;
+            if (ModelState.IsValid)
+            {
+                db.Users.Add(users);
+                db.SaveChanges();
+                FormsAuthentication.SetAuthCookie(email, rememberMe);
+                return RedirectToAction("Index", "Home");
+            }
+
+            return View(users);
         }
     }
 }

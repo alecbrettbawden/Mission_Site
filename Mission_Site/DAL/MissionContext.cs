@@ -17,5 +17,7 @@ namespace Mission_Site.DAL
         public DbSet<Mission> Mission { get; set; }
 
         public System.Data.Entity.DbSet<Mission_Site.Models.MissionQuestions> MissionQuestions { get; set; }
+
+        public System.Data.Entity.DbSet<Mission_Site.Models.Users> Users { get; set; }
     }
 }
