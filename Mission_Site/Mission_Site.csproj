@@ -151,6 +151,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MissionController.cs" />
+    <Compile Include="Controllers\MissionQuestionsController.cs" />
     <Compile Include="DAL\MissionContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -353,6 +354,11 @@
     <Content Include="Views\Mission\Edit.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Mission\MissionSelect.cshtml" />
+    <Content Include="Views\MissionQuestions\Create.cshtml" />
+    <Content Include="Views\MissionQuestions\Delete.cshtml" />
+    <Content Include="Views\MissionQuestions\Details.cshtml" />
+    <Content Include="Views\MissionQuestions\Edit.cshtml" />
+    <Content Include="Views\MissionQuestions\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -8,7 +8,7 @@ using System.Web;
 
 namespace Mission_Site.Models
 {
-    [Table("Missions")]
+    [Table("MissionQuestions")]
     public class MissionQuestions
     {
         [Key]
@@ -16,15 +16,15 @@ namespace Mission_Site.Models
         public int missionquestionID { get; set; }
 
         public int missionID { get; set; }
+        public virtual Mission mission { get; set; }
+
 
         public int userID { get; set; }
         [DisplayName("Question:")]
-        public int question { get; set; }
+        public string question { get; set; }
         [DisplayName("Answer:")]
-        public int answer { get; set; }
-
-        [DisplayName("Dominate Religion")]
-        public string missionDominateReligion { get; set; }
+        public string answer { get; set; }
+        
 
        
     }
