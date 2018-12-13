@@ -146,7 +146,8 @@ namespace Mission_Site.Controllers
 
         public ActionResult MissionSelect()
         {
-            return View();
+            List<Mission> missionList = db.Mission.ToList();
+            return View(missionList);
         }
 
         public ActionResult UpdateAnswer(int? id)
