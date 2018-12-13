@@ -263,7 +263,7 @@ namespace Mission_Site.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult newAccount([Bind(Include = "userID,userEmail,password,firstName,lastName")] Users users, bool rememberMe = false)
+        public ActionResult newAccount([Bind(Include = "userID,userEmail,password,first_name,last_name")] Users users, bool rememberMe = false)
         {
             string email = users.userEmail;
             if (ModelState.IsValid)
