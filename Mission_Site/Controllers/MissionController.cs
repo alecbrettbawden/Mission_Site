@@ -37,6 +37,7 @@ namespace Mission_Site.Controllers
             return View(mission);
         }
 
+        [Authorize]
         public ActionResult MissionFAQ(int? id)
         {
             if (id == null)
@@ -205,17 +206,28 @@ namespace Mission_Site.Controllers
             return View(missionQuestions);
         }
 
+        public ActionResult Login()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult Login(FormCollection form, bool rememberMe = false)
         {
             string email = form["Email"].ToString();
             string password = form["Password"].ToString();
 
-            //Users returnedRecord = new Users();
+            List<Users> returnedRecord = db.Users.ToList();
+            int count = 0;
+            foreach (var record in returnedRecord)
+            {
+                if (record.userEmail == email && record.password == password)
+                {
+                    count++;
+                }
+            }
 
-            var returnedRecord = db.Database.SqlQuery<int>("SELECT UserID FROM Users WHERE UserEmail = " + email + " AND password = " + password);
-
-            if (returnedRecord > 0)
+            if (count > 0)
             {
                 FormsAuthentication.SetAuthCookie(email, rememberMe);
 
@@ -225,6 +237,20 @@ namespace Mission_Site.Controllers
             {
                 return View();
             }
+
+            //var returnedRecord = db.Database.SqlQuery<int>("SELECT UserID FROM Users WHERE UserEmail = " + email + " AND password = " + password);
+            //Convert.ToInt32(returnedRecord);
+
+            //if (returnedRecord > 0)
+            //{
+            //    FormsAuthentication.SetAuthCookie(email, rememberMe);
+
+            //    return RedirectToAction("MissionSelect", "Mission");
+            //}
+            //else
+            //{
+            //    return View();
+            //}
         }
 
         public ActionResult newAccount()
