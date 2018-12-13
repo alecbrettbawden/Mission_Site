@@ -361,11 +361,6 @@
     <Content Include="Views\Mission\AskQuestion.cshtml" />
     <Content Include="Views\Mission\Login.cshtml" />
     <Content Include="Views\Mission\newAccount.cshtml" />
-    <Content Include="Views\Users\Create.cshtml" />
-    <Content Include="Views\Users\Delete.cshtml" />
-    <Content Include="Views\Users\Details.cshtml" />
-    <Content Include="Views\Users\Edit.cshtml" />
-    <Content Include="Views\Users\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
