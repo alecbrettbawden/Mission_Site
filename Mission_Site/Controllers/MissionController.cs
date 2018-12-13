@@ -148,5 +148,60 @@ namespace Mission_Site.Controllers
         {
             return View();
         }
+
+        public ActionResult UpdateAnswer(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            MissionQuestions missionQuestions = db.MissionQuestions.Find(id);
+            if (missionQuestions == null)
+            {
+                return HttpNotFound();
+            }
+            return View(missionQuestions);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult UpdateAnswer([Bind(Include = "missionquestionID,missionID,userID,question,answer")] MissionQuestions missionQuestions)
+        {
+            if (ModelState.IsValid)
+            {
+                missionQuestions.question = missionQuestions.question;
+                db.Entry(missionQuestions).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("MissionFAQ", new { id = missionQuestions.missionID});
+            }
+            return View(missionQuestions);
+        }
+
+        // GET: MissionQuestions/CreateQuestion
+        public ActionResult AskQuestion(int id)
+        {
+            ViewBag.missionID = id;
+            Mission mission = db.Mission.Find(id);
+            ViewBag.missionName = mission.missionName;
+
+            return View();
+        }
+
+        // POST: Mission/askQuestion
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AskQuestion([Bind(Include = "missionquestionID,missionID,userID,question,answer,missionDominateReligion")] MissionQuestions missionQuestions, int id)
+        {
+            if (ModelState.IsValid)
+            {
+                missionQuestions.missionID = id;
+                db.MissionQuestions.Add(missionQuestions);
+                db.SaveChanges();
+                return RedirectToAction("MissionFAQ","Mission", new { id });
+            }
+
+            return View(missionQuestions);
+        }
+
     }
 }

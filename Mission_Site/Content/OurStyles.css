@@ -4,6 +4,19 @@
     background-size:100%;
 }
 
+h2 {
+    font-weight:bolder;
+    font-size: 36px;
+    font-family: 'georgia','century Gothic','Century Gothic light', sans-serif;
+}
+p {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS';
+}
+
+h4 {
+    font-family: 'georgia','century Gothic','Century Gothic light', sans-serif;
+}
+
 .back_Home {
     background-image: url(../Graphics/background.png);
     padding-top: 100px;
@@ -110,4 +123,24 @@ li {
     text-align:center;
 font-size:32px;
     color:black;
+}
+
+.question{
+    font-weight:bold;
+    font-style:italic;
+    font-size:24px;
+}
+
+.answer{
+    font-style:italic;
+}
+
+.answerform{
+    width:100%;
+    text-align:left;
+}
+
+.formQ{
+    border-style:none;
+    background-color:none;
 }

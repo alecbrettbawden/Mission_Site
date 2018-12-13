@@ -23,6 +23,7 @@ namespace Mission_Site.Models
         [DisplayName("Question:")]
         public string question { get; set; }
         [DisplayName("Answer:")]
+        [MaxLength(500,ErrorMessage ="Answer must be less than 500 words")]
         public string answer { get; set; }
         
 
