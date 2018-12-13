@@ -195,6 +195,9 @@ namespace Mission_Site.Controllers
         {
             if (ModelState.IsValid)
             {
+                int name = 1;
+
+                missionQuestions.userID = name;
                 missionQuestions.missionID = id;
                 db.MissionQuestions.Add(missionQuestions);
                 db.SaveChanges();
