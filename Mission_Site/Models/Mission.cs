@@ -33,5 +33,7 @@ namespace Mission_Site.Models
         public string missionDominateReligion { get; set; }
 
         public string missionImage { get; set; }
+
+        public IEnumerable<MissionQuestions> MissionQuestions {get; set;}
     }
 }

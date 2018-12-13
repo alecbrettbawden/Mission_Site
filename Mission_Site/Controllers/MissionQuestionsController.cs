@@ -11,126 +11,107 @@ using Mission_Site.Models;
 
 namespace Mission_Site.Controllers
 {
-    public class MissionController : Controller
+    public class MissionQuestionsController : Controller
     {
         private MissionContext db = new MissionContext();
 
-        // GET: Mission
+        // GET: MissionQuestions
         public ActionResult Index()
         {
-            return View(db.Mission.ToList());
+            return View(db.MissionQuestions.ToList());
         }
 
-        // GET: Mission/Details/5
+        // GET: MissionQuestions/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Mission mission = db.Mission.Find(id);
-            if (mission == null)
+            MissionQuestions missionQuestions = db.MissionQuestions.Find(id);
+            if (missionQuestions == null)
             {
                 return HttpNotFound();
             }
-            return View(mission);
+            return View(missionQuestions);
         }
 
-        public ActionResult MissionFAQ(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Mission mission = db.Mission.Find(id);
-
-            if (mission == null)
-            {
-                return HttpNotFound();
-            }
-
-
-            mission.MissionQuestions = db.Database.SqlQuery<MissionQuestions>("SELECT * FROM dbo.MissionQuestions WHERE MissionID = " + id);
-
-            return View(mission);
-        }
-
-        // GET: Mission/Create
+        // GET: MissionQuestions/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Mission/Create
+        // POST: MissionQuestions/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "missionID,missionName,presidentName,missionAddress,missionLanguage,missionClimate,missionDominateReligion")] Mission mission)
+        public ActionResult Create([Bind(Include = "missionquestionID,missionID,userID,question,answer,missionDominateReligion")] MissionQuestions missionQuestions)
         {
             if (ModelState.IsValid)
             {
-                db.Mission.Add(mission);
+                db.MissionQuestions.Add(missionQuestions);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(mission);
+            return View(missionQuestions);
         }
 
-        // GET: Mission/Edit/5
+        // GET: MissionQuestions/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Mission mission = db.Mission.Find(id);
-            if (mission == null)
+            MissionQuestions missionQuestions = db.MissionQuestions.Find(id);
+            if (missionQuestions == null)
             {
                 return HttpNotFound();
             }
-            return View(mission);
+            return View(missionQuestions);
         }
 
-        // POST: Mission/Edit/5
+        // POST: MissionQuestions/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "missionID,missionName,presidentName,missionAddress,missionLanguage,missionClimate,missionDominateReligion")] Mission mission)
+        public ActionResult Edit([Bind(Include = "missionquestionID,missionID,userID,question,answer,missionDominateReligion")] MissionQuestions missionQuestions)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(mission).State = EntityState.Modified;
+                db.Entry(missionQuestions).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(mission);
+            return View(missionQuestions);
         }
 
-        // GET: Mission/Delete/5
+        // GET: MissionQuestions/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Mission mission = db.Mission.Find(id);
-            if (mission == null)
+            MissionQuestions missionQuestions = db.MissionQuestions.Find(id);
+            if (missionQuestions == null)
             {
                 return HttpNotFound();
             }
-            return View(mission);
+            return View(missionQuestions);
         }
 
-        // POST: Mission/Delete/5
+        // POST: MissionQuestions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Mission mission = db.Mission.Find(id);
-            db.Mission.Remove(mission);
+            MissionQuestions missionQuestions = db.MissionQuestions.Find(id);
+            db.MissionQuestions.Remove(missionQuestions);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -142,11 +123,6 @@ namespace Mission_Site.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
-        }
-
-        public ActionResult MissionSelect()
-        {
-            return View();
         }
     }
 }
